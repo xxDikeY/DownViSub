@@ -13,6 +13,8 @@
    
 ```
 pip install pytube
+```
+```
 pip install youtube-transcript-api
 ```
 
