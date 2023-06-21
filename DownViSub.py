@@ -83,7 +83,7 @@ def Main():
 
             if len(playlist.videos) == 0:
                 print("Плейлист закрытый или пустой")
-                break
+                continue
 
             all_count = len(playlist.videos)
             count = 1
