@@ -1,4 +1,4 @@
-# [DownViSub](https://github.com/xxDikeY/DownViSub/blob/main/DownViSub.py)
+# DownViSub
 
 [Скачать DownViSub](https://github.com/xxDikeY/DownViSub/blob/main/DownViSub.py)
 
