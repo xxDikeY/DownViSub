@@ -101,6 +101,7 @@ def Main():
             continue
 
         print("Завершено")
+        input()
         break
 
 
