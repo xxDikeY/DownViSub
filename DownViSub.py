@@ -67,7 +67,7 @@ def Main():
     char_list = ['\\', '/', ':', '*', '?', '"', '<', '>', '|']
 
     while True:
-        video_url = input("Введите ссылку")
+        video_url = input("Введите ссылку: ")
 
         if video_url.find("/watch") != -1:
             video = YouTube(video_url)
