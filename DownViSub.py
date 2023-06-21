@@ -1,34 +1,15 @@
 # pip install pytube
 from pytube import Playlist
+from pytube import YouTube
 
 # pip install youtube-transcript-api
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api.formatters import SRTFormatter
 
 
-# Список для проверки запрещённых символов в названии файлов
-char_list = ['\\', '/', ':', '*', '?', '"', '<', '>', '|']
-
-while True:
-    try:
-        # Ссылка на плейлист
-        #playlist = Playlist(input("Введите ссылку на плейлист: "))
-        playlist = Playlist("https://www.youtube.com/playlist?list=PL3v6p1kJaY-jLLgxL-IZGQT1ZAjrmtS1f")
-
-        all_count = len(playlist.videos)
-        count = 1
-
-    except:
-        print("Неправильно введена ссылка")
-        continue
-
-    break
 
 
-
-
-for video in playlist.videos:
-
+def download_video(video, char_list, count, all_count):
     print("_________________________________________")
 
     # Название видео
@@ -43,6 +24,7 @@ for video in playlist.videos:
 
     # Скачивание видео в 360p
     video.streams.get_by_itag(18).download(f"{video_name}/")
+
 
     # Список со всеми субтитрами
     try:
@@ -75,8 +57,54 @@ for video in playlist.videos:
     # Если субтитров нет
     except:
         print("Субтитров нет")
-    
 
-    count += 1
 
-input("Завершено")
+
+
+def Main():
+
+    # Список для проверки запрещённых символов в названии файлов
+    char_list = ['\\', '/', ':', '*', '?', '"', '<', '>', '|']
+
+    while True:
+        video_url = "https://www.youtube.com/watch?v=iMpHkty-9yc"
+
+        if video_url.find("/watch") != -1:
+            video = YouTube(video_url)
+
+            all_count = 1
+            count = 1
+
+            download_video(video, char_list, count, all_count)
+
+        elif video_url.find("/playlist"):
+            playlist = Playlist(video_url)
+
+
+            if len(playlist.videos) == 0:
+                print("Плейлист закрытый или пустой")
+                continue
+
+            all_count = len(playlist.videos)
+            count = 1
+
+            for video in playlist.videos:
+                download_video(video, char_list, count, all_count)
+
+                count += 1
+
+            
+
+        else:
+            print("Неправильная ссылка")
+
+            continue
+
+        print("Завершено")
+        break
+
+
+
+
+
+Main()
