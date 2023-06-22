@@ -69,7 +69,7 @@ def Main():
     while True:
         video_url = input("Введите ссылку: ")
 
-        if video_url.find("/watch") != -1:
+        if video_url.find("/watch") != -1 or video_url.find("youtu.be/"):
             video = YouTube(video_url)
 
             all_count = 1
@@ -77,7 +77,7 @@ def Main():
 
             download_video(video, char_list, count, all_count)
 
-        elif video_url.find("/playlist"):
+        elif video_url.find("/playlist") != -1:
             playlist = Playlist(video_url)
 
 
