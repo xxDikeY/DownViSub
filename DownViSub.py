@@ -69,7 +69,7 @@ def Main():
     while True:
         video_url = input("Введите ссылку: ")
 
-        if video_url.find("/watch") != -1 or video_url.find("youtu.be/"):
+        if video_url.find("/watch") != -1:
             video = YouTube(video_url)
 
             all_count = 1
